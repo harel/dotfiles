@@ -1,0 +1,38 @@
+export GOPATH=/home/harel/dev/unibet/:/home/harel/dev/crmpro:/home/harel/dev/checkadoo:/home/harel/dev/glow/src/slimmer
+export SENCHA_CMD_3_0_0="/home/harel/bin/Sencha/Cmd/4.0.2.67"
+
+export PATH=/home/harel/bin/Sencha/Cmd/3.1.2.342:$PATH
+
+export MARKPATH=$HOME/.marks
+function jump {
+    cd -P $MARKPATH/$1 2>/dev/null || echo "No such mark: $1"
+}
+function mark {
+    mkdir -p $MARKPATH; ln -s $(pwd) $MARKPATH/$1
+}
+function unmark {
+    rm -i $MARKPATH/$1
+}
+function marks {
+    ls -l $MARKPATH | sed 's/  / /g' | cut -d' ' -f9- | sed 's/ -/\t-/g' && echo
+}
+_completemarks() {
+  local curw=${COMP_WORDS[COMP_CWORD]}
+  local wordlist=$(find $MARKPATH -type l -printf "%f\n")
+  COMPREPLY=($(compgen -W '${wordlist[@]}' -- "$curw"))
+  return 0
+}
+
+complete -F _completemarks jump unmark
+
+function parse_git_branch_and_add_brackets {
+  git branch --no-color 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/\ \[\1\]/'
+}
+PS1="\u@\h:\w\[\033[0;32m\]\$(parse_git_branch_and_add_brackets)\[\033[0m\]\$ "
+
+alias pss='node_modules/karma/bin/karma start karma.conf.js log-level debug'
+
+export PATH=/home/harel/bin/Sencha/Cmd/4.0.2.67:$PATH
+export PATH=/home/harel/dev/glow/src/glowmachine-ui/node_modules/bower/bin:$PATH
+export PATH=/home/harel/dev/glow/src/glowmachine-ui/node_modules/.bin:$PATH
+
