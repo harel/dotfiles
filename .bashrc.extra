@@ -1,8 +1,17 @@
+# GO path setup
 export GOPATH=/home/harel/dev/unibet/:/home/harel/dev/crmpro:/home/harel/dev/checkadoo:/home/harel/dev/glow/src/slimmer
+
+# Sencha cmd for extjs builds
 export SENCHA_CMD_3_0_0="/home/harel/bin/Sencha/Cmd/4.0.2.67"
-
 export PATH=/home/harel/bin/Sencha/Cmd/3.1.2.342:$PATH
+export PATH=/home/harel/bin/Sencha/Cmd/4.0.2.67:$PATH
+export PATH=/home/harel/dev/glow/src/glowmachine-ui/node_modules/bower/bin:$PATH
+export PATH=/home/harel/dev/glow/src/glowmachine-ui/node_modules/.bin:$PATH
 
+# mark/jump support + completion
+# un/mark name : bookmark a directory or remove one (unmark)
+# jump name : jump to directory
+# marks : show all bookmarks
 export MARKPATH=$HOME/.marks
 function jump {
     cd -P $MARKPATH/$1 2>/dev/null || echo "No such mark: $1"
@@ -25,14 +34,13 @@ _completemarks() {
 
 complete -F _completemarks jump unmark
 
+# prompt to show git branch in git directories
 function parse_git_branch_and_add_brackets {
   git branch --no-color 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/\ \[\1\]/'
 }
 PS1="\u@\h:\w\[\033[0;32m\]\$(parse_git_branch_and_add_brackets)\[\033[0m\]\$ "
 
-alias pss='node_modules/karma/bin/karma start karma.conf.js log-level debug'
+# Testing shotcut for karma
+alias karma='node_modules/karma/bin/karma start karma.conf.js log-level debug'
 
-export PATH=/home/harel/bin/Sencha/Cmd/4.0.2.67:$PATH
-export PATH=/home/harel/dev/glow/src/glowmachine-ui/node_modules/bower/bin:$PATH
-export PATH=/home/harel/dev/glow/src/glowmachine-ui/node_modules/.bin:$PATH
 
