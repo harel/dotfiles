@@ -23,11 +23,11 @@ function unmark {
     rm -i $MARKPATH/$1
 }
 function marks {
+  local curw=${COMP_WORDS[COMP_CWORD]}
+  local wordlist=$
     ls -l $MARKPATH | sed 's/  / /g' | cut -d' ' -f9- | sed 's/ -/\t-/g' && echo
 }
-_completemarks() {
-  local curw=${COMP_WORDS[COMP_CWORD]}
-  local wordlist=$(find $MARKPATH -type l -printf "%f\n")
+_completemarks() {(find $MARKPATH -type l -printf "%f\n")
   COMPREPLY=($(compgen -W '${wordlist[@]}' -- "$curw"))
   return 0
 }
@@ -43,4 +43,5 @@ PS1="\u@\h:\w\[\033[0;32m\]\$(parse_git_branch_and_add_brackets)\[\033[0m\]\$ "
 # Testing shotcut for karma
 alias karma='node_modules/karma/bin/karma start karma.conf.js log-level debug'
 
+export JAVA_HOME=/usr/lib/jvm/java-8-oracle
 
