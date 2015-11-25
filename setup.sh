@@ -1,5 +1,6 @@
 #!/bin/bash
 sudo apt-add-repository ppa:webupd8team/java
+sudo apt-add-repository ppa:tualatrix/ppa
 
 sudo sh -c 'echo "deb http://apt.postgresql.org/pub/repos/apt/ $(lsb_release -cs)-pgdg main" > /etc/apt/sources.list.d/pgdg.list'
 wget --quiet -O - https://www.postgresql.org/media/keys/ACCC4CF8.asc | sudo apt-key add -
@@ -9,6 +10,6 @@ wget --quiet -O - https://www.rabbitmq.com/rabbitmq-signing-key-public.asc | sud
 
 sudo apt-get update
 
-sudo apt-get install screen vim git mercurial htop terminator \
+sudo apt-get install gnome-shell screen vim git mercurial htop terminator \
 nodejs npm oracle-java8-installer postgresql-9.4 rabbitmq-server \
-
+ubuntu-tweak gnome-tweak-tool
