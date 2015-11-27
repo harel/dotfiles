@@ -11,5 +11,9 @@ wget --quiet -O - https://www.rabbitmq.com/rabbitmq-signing-key-public.asc | sud
 sudo apt-get update
 
 sudo apt-get install gnome-shell screen vim git mercurial htop terminator \
-nodejs npm oracle-java8-installer postgresql-9.4 rabbitmq-server \
-ubuntu-tweak gnome-tweak-tool
+nodejs npm oracle-java8-installer postgresql-9.4 postgresql-server-dev-9.4 rabbitmq-server \
+ubuntu-tweak gnome-tweak-tool python-pip mysql-server 
+
+sudo pip install virtualenv
+
+mkdir ~/dev
