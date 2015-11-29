@@ -1,0 +1,9 @@
+# Screen rc file. name as .screenrc in home dir
+
+hardstatus on
+hardstatus alwayslastline
+startup_message off
+termcapinfo xterm ti@:te@
+hardstatus string "%{= kG}%-w%{.rW}%n %t%{-}%+w %=%{..G} %H %{..Y} %m/%d %C%a "
+screen -t screen1   0
+screen -t screen2  1
