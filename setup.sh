@@ -13,7 +13,7 @@ sudo apt-get update
 sudo apt-get install gnome-shell screen vim git mercurial htop terminator \
 nodejs npm oracle-java8-installer postgresql-9.4 postgresql-server-dev-9.4 rabbitmq-server \
 ubuntu-tweak gnome-tweak-tool python-pip mysql-server python-dev  libmysqlclient-dev \
-libssl-dev libcurl4-openssl-dev
+libssl-dev libcurl4-openssl-dev build-essential libpq-dev
 
 sudo pip install virtualenv
 
