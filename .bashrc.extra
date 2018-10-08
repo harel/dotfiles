@@ -1,3 +1,5 @@
+# DEPRACATED
+
 # GO path setup
 export GOPATH=/home/harel/dev/unibet/:/home/harel/dev/crmpro:/home/harel/dev/checkadoo:/home/harel/dev/glow/src/slimmer
 
