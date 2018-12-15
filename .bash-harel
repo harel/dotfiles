@@ -73,5 +73,11 @@ alias port='netstat -tulanp'
 # VirtualEnv setup
 
 export WORKON_HOME=~/Envs
-source /usr/local/bin/virtualenvwrapper.sh
+source ~/.local/bin/virtualenvwrapper.sh
+
+# Tilix setup if available
+if [ $TILIX_ID ] || [ $VTE_VERSION ]; then
+    source /etc/profile.d/vte.sh
+fi
+
 
