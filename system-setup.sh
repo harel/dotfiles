@@ -27,5 +27,5 @@ apt-get install postgresql-11 virtualenv virtualenvwrapper git libgtk2.0-0 subli
 apt-get install gnome-tweak-tool gnome-session
 
 
-mkdir ~/dev
+mkdir -P ~/dev
 
