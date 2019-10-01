@@ -75,6 +75,18 @@ alias port='netstat -tulanp'
 export WORKON_HOME=~/Envs
 source ~/.local/bin/virtualenvwrapper.sh
 
+##############################################################################
+# Host completion for 'connect'
+_completeconnecthosts() {
+  local curw=${COMP_WORDS[COMP_CWORD]}
+  local wordlist=$(~/.local/bin/connect hosts)
+  COMPREPLY=($(compgen -W '${wordlist[@]}' -- "$curw"))
+  return 0
+}
+
+complete -F _completeconnecthosts connect
+
+##############################################################################
 # Tilix setup if available
 if [ $TILIX_ID ] || [ $VTE_VERSION ]; then
     source /etc/profile.d/vte.sh
