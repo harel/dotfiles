@@ -5,7 +5,7 @@
 # un/mark name : bookmark a directory or remove one (unmark)
 # jump name : jump to directory
 # marks : show all bookmarks
-export MARKPATH=$HOME/.marks
+export MARKPATH=$HOME/bin/.marks
 function jump {
     cd -P $MARKPATH/$1 2>/dev/null || echo "No such mark: $1"
 }
@@ -72,14 +72,14 @@ alias port='netstat -tulanp'
 ##############################################################################
 # VirtualEnv setup
 
-export WORKON_HOME=~/Envs
-source ~/.local/bin/virtualenvwrapper.sh
+export WORKON_HOME=~/.virtualenvs
+source /usr/local/bin/virtualenvwrapper.sh
 
 ##############################################################################
 # Host completion for 'connect'
 _completeconnecthosts() {
   local curw=${COMP_WORDS[COMP_CWORD]}
-  local wordlist=$(~/.local/bin/connect hosts)
+  local wordlist=$(~/bin/connect hosts)
   COMPREPLY=($(compgen -W '${wordlist[@]}' -- "$curw"))
   return 0
 }
@@ -89,7 +89,22 @@ complete -F _completeconnecthosts connect
 ##############################################################################
 # Tilix setup if available
 if [ $TILIX_ID ] || [ $VTE_VERSION ]; then
-    source /etc/profile.d/vte.sh
+    source /etc/profile.d/vte-2.91.sh
 fi
 
+# EDITOR
+export EDITOR=vim
 
+# Flutter alias
+export PATH="$PATH:/home/harel/dev/flutter/bin"
+
+# home bin
+export PATH="$PATH:/home/harel/bin"
+
+# Powerline
+#if [ -f `which powerline-daemon` ]; then
+#  powerline-daemon -q
+#  POWERLINE_BASH_CONTINUATION=1
+#  POWERLINE_BASH_SELECT=1
+#  . ~/.local/lib/python3.8/site-packages/powerline/bindings/bash/powerline.sh
+#fi

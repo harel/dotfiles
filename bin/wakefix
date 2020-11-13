@@ -1,0 +1,4 @@
+sudo su
+echo "XHC" > /proc/acpi/wakeup
+exit
+
