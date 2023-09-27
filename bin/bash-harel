@@ -32,7 +32,7 @@ complete -F _completemarks jump unmark
 function parse_git_branch_and_add_brackets {
   git branch --no-color 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/\ \[\1\]/'
 }
-PS1="\u@\h:\w\[\033[0;32m\]\$(parse_git_branch_and_add_brackets)\[\033[0m\]\$ "
+PS1="\[\033[01;32m\]\u@\h:\w\[\033[0;32m\]\$(parse_git_branch_and_add_brackets)\[\033[0m\]\$ \[\033[00m\]"
 
 ##############################################################################
 # Find out what is taking so much space on your drives
@@ -108,3 +108,5 @@ export PATH="$PATH:/home/harel/bin"
 #  POWERLINE_BASH_SELECT=1
 #  . ~/.local/lib/python3.8/site-packages/powerline/bindings/bash/powerline.sh
 #fi
+
+neofetch
